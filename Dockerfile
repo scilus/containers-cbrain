@@ -5,7 +5,7 @@ RUN wget https://github.com/nextflow-io/nextflow/releases/download/v19.04.0/next
 ENV PATH="/:${PATH}"
 
 WORKDIR /
-ENV TRACTOFLOW_VERSION="2.1.2"
+ENV TRACTOFLOW_VERSION="2.2.0"
 RUN wget https://github.com/scilus/tractoflow/archive/${TRACTOFLOW_VERSION}.zip
 RUN unzip ${TRACTOFLOW_VERSION}.zip
 RUN mv tractoflow-${TRACTOFLOW_VERSION} tractoflow

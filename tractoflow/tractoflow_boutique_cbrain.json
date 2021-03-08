@@ -2,7 +2,7 @@
     "name": "Tractoflow",
     "description": "The TractoFlow pipeline is a fully automated and reproducible dMRI processing pipeline. The application, with default parameters, requires only a dataset conformed to the BIDS specification. BIDS format and applications are explained in detail at http://bids.neuroimaging.io/",
     "author": "SCILUS (https://github.com/scilus)",
-    "tool-version": "v2.1.0",
+    "tool-version": "v2.2.0",
     "schema-version": "0.5",
     "shell": "/bin/bash",
     "custom": {
