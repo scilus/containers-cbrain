@@ -402,7 +402,7 @@
             "name": "basis",
             "optional": true,
             "default-value": "descoteaux07",
-            "type": "Number",
+            "type": "String",
             "value-key": "[BASIS]",
             "value-choices": [
               "descoteaux07",
