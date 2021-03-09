@@ -503,10 +503,10 @@
             ]
         },
         {
-            "command-line-flag": "--pft_fa_seeding_mask_theshold",
+            "command-line-flag": "--pft_fa_seeding_mask_threshold",
             "description": "[PFT] FA threshold for FA seeding mask.",
-            "id": "pft_fa_seeding_mask_theshold",
-            "name": "pft_fa_seeding_mask_theshold",
+            "id": "pft_fa_seeding_mask_threshold",
+            "name": "pft_fa_seeding_mask_threshold",
             "optional": true,
             "default-value": 0.1,
             "type": "Number",
@@ -653,10 +653,10 @@
             ]
         },
         {
-            "command-line-flag": "--local_fa_seeding_mask_theshold",
+            "command-line-flag": "--local_fa_seeding_mask_threshold",
             "description": "[LOCAL] FA threshold for FA seeding mask",
-            "id": "local_fa_seeding_mask_theshold",
-            "name": "local_fa_seeding_mask_theshold",
+            "id": "local_fa_seeding_mask_threshold",
+            "name": "local_fa_seeding_mask_threshold",
             "optional": true,
             "default-value": 0.1,
             "type": "Number",
@@ -677,10 +677,10 @@
             ]
         },
         {
-            "command-line-flag": "--local_fa_tracking_mask_theshold",
+            "command-line-flag": "--local_fa_tracking_mask_threshold",
             "description": "[LOCAL] FA threshold for FA seeding mask",
-            "id": "local_fa_tracking_mask_theshold",
-            "name": "local_fa_tracking_mask_theshold",
+            "id": "local_fa_tracking_mask_threshold",
+            "name": "local_fa_tracking_mask_threshold",
             "optional": true,
             "default-value": 0.1,
             "type": "Number",
