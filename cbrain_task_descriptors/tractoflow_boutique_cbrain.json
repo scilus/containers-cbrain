@@ -79,7 +79,7 @@
             "name": "odf_shells",
             "optional": false,
             "type": "String",
-            "value-key": "[ODF_SHELLS]"
+            "value-key": "[FODF_SHELLS]"
         },
         {
             "command-line-flag": "--participants_label",
