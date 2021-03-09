@@ -148,7 +148,11 @@
             "optional": true,
             "default-value": "true",
             "type": "String",
-            "value-key": "[RUN_DWI_DENOISING]"
+            "value-key": "[RUN_DWI_DENOISING]",
+            "value-choices": [
+              "true",
+              "false"
+            ]
         },
         {
             "command-line-flag": "--extent",
@@ -185,7 +189,7 @@
             "id": "readout",
             "name": "readout",
             "optional": true,
-            "default-value": "0.062",
+            "default-value": 0.062,
             "type": "Number",
             "value-key": "[READOUT]"
         },
@@ -197,7 +201,11 @@
             "optional": true,
             "default-value": "true",
             "type": "String",
-            "value-key": "[RUN_EDDY]"
+            "value-key": "[RUN_EDDY]",
+            "value-choices": [
+              "true",
+              "false"
+            ]
         },
         {
             "command-line-flag": "--eddy_cmd",
@@ -219,7 +227,7 @@
             "id": "bet_topup_before_eddy_f",
             "name": "bet_topup_before_eddy_f",
             "optional": true,
-            "default-value": "0.16",
+            "default-value": 0.16,
             "type": "Number",
             "value-key": "[BET_TOPUP_BEFORE_EDDY_F]"
         },
@@ -229,9 +237,13 @@
             "id": "use_slice_drop_correction",
             "name": "use_slice_drop_correction",
             "optional": true,
-            "default-value": "0.16",
-            "type": "Number",
-            "value-key": "[USE_SLICE_DROP_CORRECTION]"
+            "default-value": "true",
+            "type": "String",
+            "value-key": "[USE_SLICE_DROP_CORRECTION]",
+            "value-choices": [
+              "true",
+              "false"
+            ]
         },
         {
             "command-line-flag": "--bet_dwi_final_f",
@@ -239,7 +251,7 @@
             "id": "bet_dwi_final_f",
             "name": "bet_dwi_final_f",
             "optional": true,
-            "default-value": "0.16",
+            "default-value": 0.16,
             "type": "Number",
             "value-key": "[BET_DWI_FINAL_F]"
         },
@@ -249,7 +261,7 @@
             "id": "fa_mask_threshold",
             "name": "fa_mask_threshold",
             "optional": true,
-            "default-value": "0.4",
+            "default-value": 0.4,
             "type": "Number",
             "value-key": "[BET_DWI_FINAL_F]"
         },
@@ -261,7 +273,11 @@
             "optional": true,
             "default-value": "true",
             "type": "String",
-            "value-key": "[RUN_RESAMPLE_DWI]"
+            "value-key": "[RUN_RESAMPLE_DWI]",
+            "value-choices": [
+              "true",
+              "false"
+            ]
         },
         {
             "command-line-flag": "--dwi_resolution",
@@ -297,7 +313,11 @@
             "optional": true,
             "default-value": "true",
             "type": "String",
-            "value-key": "[RUN_T1_DENOISING]"
+            "value-key": "[RUN_T1_DENOISING]",
+            "value-choices": [
+              "true",
+              "false"
+            ]
         },
         {
             "command-line-flag": "--run_resample_t1",
@@ -307,7 +327,11 @@
             "optional": true,
             "default-value": "true",
             "type": "String",
-            "value-key": "[RUN_RESAMPLE_T1]"
+            "value-key": "[RUN_RESAMPLE_T1]",
+            "value-choices": [
+              "true",
+              "false"
+            ]
         },
         {
             "command-line-flag": "--t1_resolution",
@@ -457,7 +481,11 @@
             "optional": true,
             "default-value": "true",
             "type": "String",
-            "value-key": "[RUN_PFT_TRACKING]"
+            "value-key": "[RUN_PFT_TRACKING]",
+            "value-choices": [
+              "true",
+              "false"
+            ]
         },
         {
             "command-line-flag": "--pft_seeding_mask_type",
@@ -480,7 +508,7 @@
             "id": "pft_fa_seeding_mask_theshold",
             "name": "pft_fa_seeding_mask_theshold",
             "optional": true,
-            "default-value": "0.1",
+            "default-value": 0.1,
             "type": "Number",
             "value-key": "[PFT_FA_SEEDING_MASK_THRESHOLD]"
         },
@@ -491,7 +519,7 @@
             "name": "pft_algo",
             "optional": true,
             "default-value": "prob",
-            "type": "Number",
+            "type": "String",
             "value-key": "[PFT_ALGO]",
             "value-choices": [
               "prob",
@@ -518,7 +546,7 @@
             "id": "pft_nbr_seeds",
             "name": "pft_nbr_seeds",
             "optional": true,
-            "default-value": "10",
+            "default-value": 10,
             "type": "Number",
             "value-key": "[PFT_NBR_SEEDS]"
         },
@@ -570,7 +598,11 @@
             "optional": true,
             "default-value": "true",
             "type": "String",
-            "value-key": "[PFT_COMPRESS_STREAMLINES]"
+            "value-key": "[PFT_COMPRESS_STREAMLINES]",
+            "value-choices": [
+              "true",
+              "false"
+            ]
         },
         {
             "command-line-flag": "--pft_compress_value",
@@ -661,7 +693,7 @@
             "name": "local_algo",
             "optional": true,
             "default-value": "prob",
-            "type": "Number",
+            "type": "String",
             "value-key": "[LOCAL_ALGO]",
             "value-choices": [
               "prob",
@@ -688,7 +720,7 @@
             "id": "local_nbr_seeds",
             "name": "local_nbr_seeds",
             "optional": true,
-            "default-value": "10",
+            "default-value": 10,
             "type": "Number",
             "value-key": "[LOCAL_NBR_SEEDS]"
         },
@@ -740,7 +772,11 @@
             "optional": true,
             "default-value": "true",
             "type": "String",
-            "value-key": "[LOCAL_COMPRESS_STREAMLINES]"
+            "value-key": "[LOCAL_COMPRESS_STREAMLINES]",
+            "value-choices": [
+              "true",
+              "false"
+            ]
         },
         {
             "command-line-flag": "--local_compress_value",
