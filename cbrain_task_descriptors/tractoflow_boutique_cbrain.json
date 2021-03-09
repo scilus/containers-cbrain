@@ -82,15 +82,6 @@
             "value-key": "[ODF_SHELLS]"
         },
         {
-            "id": "output_dir",
-            "command-line-flag": "--output_dir",
-            "name": "Output directory name",
-            "type": "File",
-            "description": "The directory where the output files should be stored.",
-            "value-key": "[OUTPUT_DIR]",
-            "optional": true
-        },
-        {
             "command-line-flag": "--participants_label",
             "description": "A space delimited list of participant identifiers or a single identifier (the sub- prefix can be removed)",
             "id": "participants_label",
