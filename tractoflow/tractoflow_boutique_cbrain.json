@@ -841,5 +841,14 @@
             "type": "Flag",
             "value-key": "[PROFILE]"
         }
+    ],
+    "output-files" : [
+        {
+            "id" : "output_dir",
+            "name" : "Output Directory",
+            "description" : "This is the directory where the overall outputs are to be stored.",
+            "path-template" : "[OUTPUT_DIR]",
+            "optional" : false
+        }
     ]
 }
