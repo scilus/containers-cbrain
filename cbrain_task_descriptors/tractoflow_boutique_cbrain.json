@@ -54,6 +54,7 @@
     ],
     "inputs": [
         {
+            "command-line-flag": "--bids",
             "description": "Input BIDS folder",
             "id": "bids_dir",
             "name": "Input BIDS folder",
