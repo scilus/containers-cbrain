@@ -1,5 +1,5 @@
 {
-    "name": "Tractoflow",
+    "name": "BIDSAppTractoflow",
     "description": "The TractoFlow pipeline is a fully automated and reproducible dMRI processing pipeline. The application, with default parameters, requires only a dataset conformed to the BIDS specification. BIDS format and applications are explained in detail at http://bids.neuroimaging.io/",
     "author": "SCILUS (https://github.com/scilus)",
     "tool-version": "v2.2.0",
@@ -9,7 +9,7 @@
         "cbrain:readonly-input-files": true,
         "cbrain:author": "Arnaud Boré <arnaud.bore@gmail.com> and Guillaume Theaud <guillaume.theaud@usherbrooke.ca>"
      },
-    "command-line": "nextflow run /tractoflow/main.nf [BIDS_DIR] [DTI_SHELLS] [FODF_SHELLS] [OUTPUT_DIR] \"[PARTICIPANTS_LABEL]\" [ODF_SHELLS] [B0_THR_EXTRACT_B0] [DWI_SHELL_TOLERANCE] [BET_PRELIM_F] [DILATE_B0_MASK_PRELIM_BRAIN_EXTRACTION] [RUN_DWI_DENOISING] [EXTENT] [RUN_TOPUP] [ENCODING_DIRECTION] [READOUT] [RUN_EDDY] [EDDY_CMD] [BET_TOPUP_BEFORE_EDDY_F] [USE_SLICE_DROP_CORRECTION] [BET_DWI_FINAL_F] [FA_MASK_THRESHOLD] [RUN_RESAMPLE_DWI] [DWI_RESOLUTION] [DWI_INTERPOLATION] [RUN_T1_DENOISING] [RUN_RESAMPLE_T1] [T1_RESOLUTION] [T1_INTERPOLATION] [NUMBER_OF_TISSUES] [FA] [MIN_FA] [ROI_RADIUS] [MANUAL_FRF] [SH_ORDER] [BASIS] [FODF_METRICS_A_FACTOR] [RELATIVE_THRESHOLD] [MAX_FA_IN_VENTRICULE] [MIN_MD_IN_VENTRICULE] [RUN_PFT_TRACKING] [PFT_SEEDING_MASK_TYPE] [PFT_FA_SEEDING_MASK_THRESHOLD] [PFT_ALGO] [PFT_SEEDING] [PFT_NBR_SEEDS] [PFT_STEP] [PFT_THETA] [PFT_MIN_LEN] [PFT_MAX_LEN] [PFT_COMPRESS_STREAMLINES] [PFT_COMPRESS_VALUE] [PFT_RANDOM_SEED] [RUN_LOCAL_TRACKING] [LOCAL_SEEDING_MASK_TYPE] [LOCAL_SEEDING_MASK_THRESHOLD] [LOCAL_TRACKING_MASK_TYPE] [LOCAL_FA_TRACKING_MASK_THRESHOLD] [LOCAL_ALGO] [LOCAL_SEEDING] [LOCAL_NBR_SEEDS] [LOCAL_STEP] [LOCAL_THETA] [LOCAL_MIN_LEN] [LOCAL_MAX_LEN] [LOCAL_COMPRESS_STREAMLINES] [LOCAL_COMPRESS_VALUE] [LOCAL_RANDOM_SEED] [TEMPLATE_T1] [PROCESSES_BRAIN_EXTRACTION_T1] [PROCESSES_DENOISE_DWI] [PROCESSES_DENOISE_T1] [PROCESSES_EDDY] [PROCESSES_FODF] [PROCESSES_REGISTRATION] [PROFILE] -resume -with-report report_sub-[PARTICIPANTS_LABEL].html",
+    "command-line": " echo [ANALYSIS_LEVEL]; nextflow run /tractoflow/main.nf [BIDS_DIR] [DTI_SHELLS] [FODF_SHELLS] [OUTPUT_DIR] [PARTICIPANT_LABEL] [B0_THR_EXTRACT_B0] [DWI_SHELL_TOLERANCE] [BET_PRELIM_F] [DILATE_B0_MASK_PRELIM_BRAIN_EXTRACTION] [RUN_DWI_DENOISING] [EXTENT] [RUN_TOPUP] [ENCODING_DIRECTION] [READOUT] [RUN_EDDY] [EDDY_CMD] [BET_TOPUP_BEFORE_EDDY_F] [USE_SLICE_DROP_CORRECTION] [BET_DWI_FINAL_F] [FA_MASK_THRESHOLD] [RUN_RESAMPLE_DWI] [DWI_RESOLUTION] [DWI_INTERPOLATION] [RUN_T1_DENOISING] [RUN_RESAMPLE_T1] [T1_RESOLUTION] [T1_INTERPOLATION] [NUMBER_OF_TISSUES] [FA] [MIN_FA] [ROI_RADIUS] [MANUAL_FRF] [SH_ORDER] [BASIS] [FODF_METRICS_A_FACTOR] [RELATIVE_THRESHOLD] [MAX_FA_IN_VENTRICULE] [MIN_MD_IN_VENTRICULE] [RUN_PFT_TRACKING] [PFT_SEEDING_MASK_TYPE] [PFT_FA_SEEDING_MASK_THRESHOLD] [PFT_ALGO] [PFT_SEEDING] [PFT_NBR_SEEDS] [PFT_STEP] [PFT_THETA] [PFT_MIN_LEN] [PFT_MAX_LEN] [PFT_COMPRESS_STREAMLINES] [PFT_COMPRESS_VALUE] [PFT_RANDOM_SEED] [run_local_tracking] [LOCAL_SEEDING_MASK_TYPE] [LOCAL_SEEDING_MASK_THRESHOLD] [LOCAL_TRACKING_MASK_TYPE] [LOCAL_FA_TRACKING_MASK_THRESHOLD] [LOCAL_ALGO] [LOCAL_SEEDING] [LOCAL_NBR_SEEDS] [LOCAL_STEP] [LOCAL_THETA] [LOCAL_MIN_LEN] [LOCAL_MAX_LEN] [LOCAL_COMPRESS_STREAMLINES] [LOCAL_COMPRESS_VALUE] [LOCAL_RANDOM_SEED] [PROCESSES_BRAIN_EXTRACTION_T1] [PROCESSES_DENOISE_DWI] [PROCESSES_DENOISE_T1] [PROCESSES_EDDY] [PROCESSES_FODF] [PROCESSES_REGISTRATION] [PROFILE] -resume -with-report report_sub-[PARTICIPANT_LABEL].html",
     "container-image":
     {
         "image": "scilus/docker-cbrain:test",
@@ -63,6 +63,15 @@
             "value-key": "[BIDS_DIR]"
         },
         {
+            "command-line-flag": "--output_dir",
+            "description": "the output path for the outcomes of preprocessing and visual reports",
+            "id": "output_dir_name",
+            "name": "output_dir_name",
+            "optional": false,
+            "type": "String",
+            "value-key": "[OUTPUT_DIR]"
+        },
+        {
             "command-line-flag": "--dti_shells",
             "description": "Shells selected to compute the dti metrics (generally b < 1200)",
             "id": "dti_shells",
@@ -73,11 +82,22 @@
             "value-key": "[DTI_SHELLS]"
         },
         {
+            "description": "processing stage to be run, only \"participant\" in the case of FMRIPREP (see BIDS-Apps specification).",
+            "id": "analysis_level",
+            "name": "analysis_level",
+            "optional": false,
+            "type": "String",
+            "value-choices": [
+                "participant"
+            ],
+            "value-key": "[ANALYSIS_LEVEL]"
+        },
+        {
             "command-line-flag": "--fodf_shells",
             "description": "Shells selected to compute the fodf metrics (generally b > 700)",
-            "id": "odf_shells",
+            "id": "fodf_shells",
             "list": true,
-            "name": "odf_shells",
+            "name": "fodf_shells",
             "optional": false,
             "type": "String",
             "value-key": "[FODF_SHELLS]"
@@ -85,12 +105,12 @@
         {
             "command-line-flag": "--participants_label",
             "description": "A space delimited list of participant identifiers or a single identifier (the sub- prefix can be removed)",
-            "id": "participants_label",
+            "id": "participant_label",
             "list": true,
-            "name": "participants_label",
+            "name": "participant_label",
             "optional": true,
             "type": "String",
-            "value-key": "[PARTICIPANTS_LABEL]"
+            "value-key": "[PARTICIPANT_LABEL]"
         },
         {
             "command-line-flag": "--b0_thr_extract_b0",
@@ -789,16 +809,6 @@
             "default-value": 0,
             "type": "Number",
             "value-key": "[LOCAL_RANDOM_SEED]"
-        },
-        {
-            "command-line-flag": "--template_t1",
-            "description": "Path to the template T1 directory for antsBrainExtraction. The folder must contain t1_template.nii.gz and t1_brain_probability_map.nii.gz. The default path is the human_data folder in the singularity container",
-            "id": "template_t1",
-            "name": "template_t1",
-            "optional": true,
-            "default-value": "/human-data/mni_152_sym_09c/t1",
-            "type": "String",
-            "value-key": "[TEMPLATE_T1]"
         },
         {
             "command-line-flag": "--processes_brain_extraction_t1",
