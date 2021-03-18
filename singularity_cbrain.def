@@ -1,2 +1,2 @@
 BootStrap: docker
-From: scilus/docker-tractoflow-cbrain:latest
+From: scilus/docker-cbrain:test
