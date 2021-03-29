@@ -191,7 +191,12 @@
             "name": "run_topup",
             "optional": true,
             "type": "String",
-            "value-key": "[RUN_TOPUP]"
+            "default-value": "true",
+            "value-key": "[RUN_TOPUP]",
+            "value-choices": [
+              "true",
+              "false"
+            ]
         },
         {
             "command-line-flag": "--encoding_direction",
@@ -201,7 +206,12 @@
             "optional": true,
             "default-value": "y",
             "type": "String",
-            "value-key": "[ENCODING_DIRECTION]"
+            "value-key": "[ENCODING_DIRECTION]",
+            "value-choices": [
+              "x",
+              "y",
+              "z"
+            ]
         },
         {
             "command-line-flag": "--readout",
