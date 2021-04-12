@@ -15,8 +15,8 @@ ENV PATH="/:${PATH}"
 
 WORKDIR /
 ENV DMRIQC_FLOW_VERSION="0.1.0"
-RUN wget https://github.com/GuillaumeTh/dmriqc-flow/archive/${DMRIQC_FLOW_VERSION}.zip
+RUN wget https://github.com/scilus/dmriqc_flow/archive/${DMRIQC_FLOW_VERSION}.zip
 RUN unzip ${DMRIQC_FLOW_VERSION}.zip
-RUN mv dmriqc-flow-${DMRIQC_FLOW_VERSION} dmriqc_flow
+RUN mv dmriqc_flow-${DMRIQC_FLOW_VERSION} dmriqc_flow
 
 WORKDIR /
