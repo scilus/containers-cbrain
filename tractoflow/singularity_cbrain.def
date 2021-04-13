@@ -1,2 +1,2 @@
 BootStrap: docker
-From: scilus/docker-cbrain:test
+From: scilus/docker-cbrain:2.2.1
