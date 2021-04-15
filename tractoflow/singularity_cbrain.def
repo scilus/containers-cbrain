@@ -1,0 +1,2 @@
+BootStrap: docker
+From: scilus/docker-cbrain:2.2.1
