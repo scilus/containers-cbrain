@@ -1,5 +1,5 @@
 {
-    "name": "BIDSAppRBX_flow",
+    "name": "rbx_flow",
     "description": "RecobundlesX pipeline (rbx_flow)",
     "author": "SCILUS (https://github.com/scilus)",
     "tool-version": "v1.0.0",
