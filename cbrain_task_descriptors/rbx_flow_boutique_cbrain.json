@@ -1,0 +1,134 @@
+{
+    "name": "BIDSAppRBX_flow",
+    "description": "RecobundlesX pipeline (rbx_flow)",
+    "author": "SCILUS (https://github.com/scilus)",
+    "tool-version": "v1.0.0",
+    "schema-version": "0.5",
+    "shell": "/bin/bash",
+    "custom": {
+        "cbrain:readonly-input-files": true,
+        "cbrain:author": "Arnaud Boré <arnaud.bore@gmail.com> and François Rheault <francois.rheault@usherbrooke.ca>"
+     },
+    "command-line": "echo [ANALYSIS_LEVEL]; nextflow run /rbx_flow/main.nf [INPUT_DIR] [ATLAS_CONFIG] [ATLAS_ANAT] [ATLAS_DIR] [OUTPUT_DIR] [ATLAS_CENTROIDS] [MULTI_PARAMETERS] [MINIMAL_VOTE_RATIO] [WB_CLUSTERING_THR] [SEEDS] [OUTLIER_ALPHA] -with-report report.html -profile fully_reproducible,cbrain",
+    "container-image":
+    {
+        "image": "scilus/cbrain-tractoflow:2.2.1",
+        "index": "docker://",
+        "type": "singularity"
+    },
+    "inputs": [
+        {
+            "command-line-flag": "--input",
+            "description": "Root folder containing multiple subjects",
+            "id": "bids_dir",
+            "name": "Root folder containing multiple subjects",
+            "optional": false,
+            "type": "File",
+            "value-key": "[INPUT_DIR]"
+        },
+        {
+            "command-line-flag": "--output_dir",
+            "description": "Output path for the outcomes of preprocessing and visual reports",
+            "id": "output_dir_name",
+            "name": "output_dir_name",
+            "optional": false,
+            "type": "String",
+            "value-key": "[OUTPUT_DIR]"
+        },
+        {
+            "command-line-flag": "--atlas_config",
+            "description": "Path to json config file",
+            "id": "atlas_config",
+            "name": "atlas_config",
+            "optional": false,
+            "type": "String",
+            "value-key": "[ATLAS_CONFIG]"
+        },
+        {
+            "command-line-flag": "--atlas_anat",
+            "description": "Path to reference anatomy of the atlas",
+            "id": "atlas_anat",
+            "name": "atlas_anat",
+            "optional": false,
+            "type": "String",
+            "value-key": "[ATLAS_ANAT]"
+        },
+        {
+            "command-line-flag": "--atlas_directory",
+            "description": "Path of the folder containing all atlases",
+            "id": "atlas_directory",
+            "name": "atlas_directory",
+            "optional": false,
+            "type": "String",
+            "value-key": "[ATLAS_DIR]"
+        },
+        {
+            "command-line-flag": "--atlas_centroids",
+            "description": "Folder containing centroids (trk) for future tractometry (Must have the same filename as in the atlas_config)",
+            "id": "atlas_centroids",
+            "name": "atlas_centroids",
+            "optional": true,
+            "type": "String",
+            "value-key": "[ATLAS_CENTROIDS]"
+        },
+        {
+            "command-line-flag": "--multi_parameters",
+            "description": "Number of executions for the multi-parameters.",
+            "id": "multi_parameters",
+            "name": "multi_parameters",
+            "optional": true,
+            "default-value": 18,
+            "type": "Number",
+            "value-key": "[MULTI_PARAMETERS]"
+        },
+        {
+            "command-line-flag": "--minimal_vote_ratio",
+            "description": "Percentage of the vote to obtain in order to be considered valid.",
+            "id": "minimal_vote_ratio",
+            "name": "minimal_vote_ratio",
+            "optional": true,
+            "default-value": 0.5,
+            "type": "Number",
+            "value-key": "[MINIMAL_VOTE_RATIO]"
+        },
+        {
+            "command-line-flag": "--wb_clustering_thr",
+            "description": "List of distance (mm) for QBx whole brain clustreing.",
+            "id": "wb_clustering_thr",
+            "name": "wb_clustering_thr",
+            "optional": true,
+            "default-value": "15 12",
+            "type": "String",
+            "value-key": "[WB_CLUSTERING_THR]"
+        },
+        {
+            "command-line-flag": "--seeds",
+            "description": "List of random seeds values for the rng.",
+            "id": "seeds",
+            "name": "seeds",
+            "optional": true,
+            "default-value": 0,
+            "type": "Number",
+            "value-key": "[SEEDS]"
+        },
+        {
+            "command-line-flag": "--outlier_alpha",
+            "description": "Remove spurious streamlines based on shape.",
+            "id": "outlier_alpha",
+            "name": "outlier_alpha",
+            "optional": true,
+            "default-value": 0.5,
+            "type": "Number",
+            "value-key": "[OUTLIER_ALPHA]"
+        }
+    ],
+    "output-files" : [
+        {
+            "id" : "output_dir",
+            "name" : "Output Directory",
+            "description" : "This is the directory where the overall outputs are to be stored.",
+            "path-template" : "[OUTPUT_DIR]",
+            "optional" : false
+        }
+    ]
+}
