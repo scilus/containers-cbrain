@@ -12,7 +12,7 @@
     "command-line": "echo [ANALYSIS_LEVEL]; nextflow run /rbx_flow/main.nf [INPUT_DIR] [ATLAS_CONFIG] [ATLAS_ANAT] [ATLAS_DIR] [OUTPUT_DIR] [ATLAS_CENTROIDS] [MULTI_PARAMETERS] [MINIMAL_VOTE_RATIO] [WB_CLUSTERING_THR] [SEEDS] [OUTLIER_ALPHA] -with-report report.html -profile fully_reproducible,cbrain",
     "container-image":
     {
-        "image": "scilus/cbrain-tractoflow:2.2.1",
+        "image": "scilus/cbrain-rbx_flow:test",
         "index": "docker://",
         "type": "singularity"
     },
@@ -41,7 +41,7 @@
             "id": "atlas_config",
             "name": "atlas_config",
             "optional": false,
-            "type": "String",
+            "type": "File",
             "value-key": "[ATLAS_CONFIG]"
         },
         {
@@ -50,7 +50,7 @@
             "id": "atlas_anat",
             "name": "atlas_anat",
             "optional": false,
-            "type": "String",
+            "type": "File",
             "value-key": "[ATLAS_ANAT]"
         },
         {
@@ -59,7 +59,7 @@
             "id": "atlas_directory",
             "name": "atlas_directory",
             "optional": false,
-            "type": "String",
+            "type": "File",
             "value-key": "[ATLAS_DIR]"
         },
         {
@@ -68,7 +68,7 @@
             "id": "atlas_centroids",
             "name": "atlas_centroids",
             "optional": true,
-            "type": "String",
+            "type": "File",
             "value-key": "[ATLAS_CENTROIDS]"
         },
         {

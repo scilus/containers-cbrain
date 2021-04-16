@@ -12,8 +12,8 @@ RUN wget https://github.com/nextflow-io/nextflow/releases/download/v19.04.0/next
 ENV PATH="/:${PATH}"
 
 WORKDIR /
-ENV RBXFLOW_VERSION="1.0.0-rc1"
-RUN wget https://github.com/scilus/rbx_flow/archive/${RBXLOW_VERSION}.zip
+ENV RBXFLOW_VERSION="0.1.0-rc2"
+RUN wget https://github.com/arnaudbore/rbx_flow/archive/${RBXFLOW_VERSION}.zip
 RUN unzip ${RBXFLOW_VERSION}.zip
 RUN mv rbx_flow-${RBXFLOW_VERSION} rbx_flow
 
