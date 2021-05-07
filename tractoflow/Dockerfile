@@ -1,4 +1,4 @@
-FROM scilus/tractoflow:2.2.1
+FROM scilus/scilus:1.1.0_tractoflow-2.2.1
 
 RUN apt install -y python-apt -f
 RUN cp /usr/lib/python3/dist-packages/apt_pkg.cpython-35m-x86_64-linux-gnu.so /usr/lib/python3/dist-packages/apt_pkg.cpython-37m-x86_64-linux-gnu.so
