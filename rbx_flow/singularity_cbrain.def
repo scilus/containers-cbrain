@@ -1,2 +1,2 @@
 BootStrap: docker
-From: scilus/cbrain-tractoflow:2.2.1
+From: scilus/cbrain-rbx_flow:1.0.0
