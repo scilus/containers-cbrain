@@ -1,2 +1,0 @@
-BootStrap: docker
-From: scilus/cbrain-tractoflow:2.2.1
