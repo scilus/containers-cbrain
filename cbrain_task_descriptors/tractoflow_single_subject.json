@@ -1,5 +1,5 @@
 {
-    "name": "BIDSAppTractoflow",
+    "name": "TractoflowSingleSubject",
     "description": "The TractoFlow pipeline is a fully automated and reproducible dMRI processing pipeline. The application, with default parameters, requires only a dataset conformed to the BIDS specification. BIDS format and applications are explained in detail at http://bids.neuroimaging.io/",
     "author": "SCILUS (https://github.com/scilus)",
     "tool-version": "v2.2.1",
@@ -9,7 +9,7 @@
         "cbrain:readonly-input-files": true,
         "cbrain:author": "Arnaud Boré <arnaud.bore@gmail.com> and Guillaume Theaud <guillaume.theaud@usherbrooke.ca>"
      },
-    "command-line": "SUB_FULL_PATH=[SUBJECT_DIR]; SUBJECT_NAME=$(basename \"$SUB_FULL_PATH\"); FAKE_BIDS_DIR=fake_bids_dir; [[ \"$SUB_FULL_PATH\" != /* ]] && SUB_FULL_PATH=\"$PWD\"/\"$SUB_FULL_PATH\"; mkdir -p \"$FAKE_BIDS_DIR\"; ln -s \"$SUB_FULL_PATH\" \"$FAKE_BIDS_DIR\"/\"$SUBJECT_NAME\"; nextflow run /tractoflow/main.nf [FAKE_BIDS_DIR] [DTI_SHELLS] [FODF_SHELLS] [OUTPUT_DIR] [PARTICIPANT_LABEL] --clean_bids [B0_THR_EXTRACT_B0] [DWI_SHELL_TOLERANCE] [BET_PRELIM_F] [DILATE_B0_MASK_PRELIM_BRAIN_EXTRACTION] [RUN_DWI_DENOISING] [EXTENT] [RUN_TOPUP] [ENCODING_DIRECTION] [READOUT] [RUN_EDDY] [EDDY_CMD] [BET_TOPUP_BEFORE_EDDY_F] [USE_SLICE_DROP_CORRECTION] [BET_DWI_FINAL_F] [FA_MASK_THRESHOLD] [RUN_RESAMPLE_DWI] [DWI_RESOLUTION] [DWI_INTERPOLATION] [RUN_T1_DENOISING] [RUN_RESAMPLE_T1] [T1_RESOLUTION] [T1_INTERPOLATION] [NUMBER_OF_TISSUES] [FA] [MIN_FA] [ROI_RADIUS] --mean_frf false [SET_FRF] [MANUAL_FRF] [SH_ORDER] [BASIS] [FODF_METRICS_A_FACTOR] [RELATIVE_THRESHOLD] [MAX_FA_IN_VENTRICULE] [MIN_MD_IN_VENTRICULE] [RUN_PFT_TRACKING] [PFT_SEEDING_MASK_TYPE] [PFT_FA_SEEDING_MASK_THRESHOLD] [PFT_ALGO] [PFT_SEEDING] [PFT_NBR_SEEDS] [PFT_STEP] [PFT_THETA] [PFT_MIN_LEN] [PFT_MAX_LEN] [PFT_COMPRESS_STREAMLINES] [PFT_COMPRESS_VALUE] [PFT_RANDOM_SEED] [RUN_LOCAL_TRACKING] [LOCAL_SEEDING_MASK_TYPE] [LOCAL_SEEDING_MASK_THRESHOLD] [LOCAL_TRACKING_MASK_TYPE] [LOCAL_FA_SEEDING_MASK_THRESHOLD] [LOCAL_FA_TRACKING_MASK_THRESHOLD] [LOCAL_ALGO] [LOCAL_SEEDING] [LOCAL_NBR_SEEDS] [LOCAL_STEP] [LOCAL_THETA] [LOCAL_MIN_LEN] [LOCAL_MAX_LEN] [LOCAL_COMPRESS_STREAMLINES] [LOCAL_COMPRESS_VALUE] [LOCAL_RANDOM_SEED] [PROCESSES_BRAIN_EXTRACTION_T1] [PROCESSES_DENOISE_DWI] [PROCESSES_DENOISE_T1] [PROCESSES_EDDY] [PROCESSES_FODF] [PROCESSES_REGISTRATION] [PROFILE] -with-report report.html -profile fully_reproducible,cbrain",
+    "command-line": "SUB_FULL_PATH=[SUBJECT_DIR]; SUBJECT_NAME=$(basename \"$SUB_FULL_PATH\"); FAKE_BIDS_DIR=fake_bids_dir; [[ \"$SUB_FULL_PATH\" != /* ]] && SUB_FULL_PATH=\"$PWD\"/\"$SUB_FULL_PATH\"; mkdir -p \"$FAKE_BIDS_DIR\"; ln -s \"$SUB_FULL_PATH\" \"$FAKE_BIDS_DIR\"/\"$SUBJECT_NAME\"; nextflow run /tractoflow/main.nf --bids \"$FAKE_BIDS_DIR\" [DTI_SHELLS] [FODF_SHELLS] [OUTPUT_DIR] --participant_label \"$SUBJECT_NAME\" --clean_bids [B0_THR_EXTRACT_B0] [DWI_SHELL_TOLERANCE] [BET_PRELIM_F] [DILATE_B0_MASK_PRELIM_BRAIN_EXTRACTION] [RUN_DWI_DENOISING] [EXTENT] [RUN_TOPUP] [ENCODING_DIRECTION] [READOUT] [RUN_EDDY] [EDDY_CMD] [BET_TOPUP_BEFORE_EDDY_F] [USE_SLICE_DROP_CORRECTION] [BET_DWI_FINAL_F] [FA_MASK_THRESHOLD] [RUN_RESAMPLE_DWI] [DWI_RESOLUTION] [DWI_INTERPOLATION] [RUN_T1_DENOISING] [RUN_RESAMPLE_T1] [T1_RESOLUTION] [T1_INTERPOLATION] [NUMBER_OF_TISSUES] [FA] [MIN_FA] [ROI_RADIUS] --mean_frf false [SET_FRF] [MANUAL_FRF] [SH_ORDER] [BASIS] [FODF_METRICS_A_FACTOR] [RELATIVE_THRESHOLD] [MAX_FA_IN_VENTRICULE] [MIN_MD_IN_VENTRICULE] [RUN_PFT_TRACKING] [PFT_SEEDING_MASK_TYPE] [PFT_FA_SEEDING_MASK_THRESHOLD] [PFT_ALGO] [PFT_SEEDING] [PFT_NBR_SEEDS] [PFT_STEP] [PFT_THETA] [PFT_MIN_LEN] [PFT_MAX_LEN] [PFT_COMPRESS_STREAMLINES] [PFT_COMPRESS_VALUE] [PFT_RANDOM_SEED] [RUN_LOCAL_TRACKING] [LOCAL_SEEDING_MASK_TYPE] [LOCAL_TRACKING_MASK_TYPE] [LOCAL_FA_SEEDING_MASK_THRESHOLD] [LOCAL_FA_TRACKING_MASK_THRESHOLD] [LOCAL_ALGO] [LOCAL_SEEDING] [LOCAL_NBR_SEEDS] [LOCAL_STEP] [LOCAL_THETA] [LOCAL_MIN_LEN] [LOCAL_MAX_LEN] [LOCAL_COMPRESS_STREAMLINES] [LOCAL_COMPRESS_VALUE] [LOCAL_RANDOM_SEED] [PROCESSES_BRAIN_EXTRACTION_T1] [PROCESSES_DENOISE_DWI] [PROCESSES_DENOISE_T1] [PROCESSES_EDDY] [PROCESSES_FODF] [PROCESSES_REGISTRATION] -with-report report.html -profile fully_reproducible,cbrain",
     "container-image":
     {
         "image": "scilus/cbrain-tractoflow:2.2.1",
@@ -68,20 +68,19 @@
     ],
     "inputs": [
         {
-            "command-line-flag": "--bids",
-            "description": "Input BIDS folder",
-            "id": "bids_dir",
-            "name": "Input BIDS folder",
+            "description": "subject folder for BIDS (folders name should be sub-XXXXX).",
+            "id": "subject_dir",
+            "name": "subject_dir",
             "optional": false,
             "type": "File",
-            "value-key": "[BIDS_DIR]"
+            "value-key": "[SUBJECT_DIR]"
         },
         {
             "command-line-flag": "--output_dir",
             "description": "Output path for the outcomes of preprocessing and visual reports",
             "id": "output_dir_name",
             "name": "output_dir_name",
-            "optional": false,
+            "optional": true,
             "type": "String",
             "value-key": "[OUTPUT_DIR]"
         },
@@ -95,17 +94,6 @@
             "value-key": "[DTI_SHELLS]"
         },
         {
-            "description": "processing stage to be run, only \"participant\" in the case of FMRIPREP (see BIDS-Apps specification).",
-            "id": "analysis_level",
-            "name": "analysis_level",
-            "optional": false,
-            "type": "String",
-            "value-choices": [
-                "participant"
-            ],
-            "value-key": "[ANALYSIS_LEVEL]"
-        },
-        {
             "command-line-flag": "--fodf_shells",
             "description": "Shells selected to compute the fodf metrics (generally b > 700). Example: 0 1000 2000",
             "id": "fodf_shells",
@@ -113,16 +101,6 @@
             "optional": false,
             "type": "String",
             "value-key": "[FODF_SHELLS]"
-        },
-        {
-            "command-line-flag": "--participants_label",
-            "description": "A space delimited list of participant identifiers or a single identifier (the sub- prefix can be removed)",
-            "id": "participant_label",
-            "list": true,
-            "name": "participant_label",
-            "optional": true,
-            "type": "String",
-            "value-key": "[PARTICIPANT_LABEL]"
         },
         {
             "command-line-flag": "--b0_thr_extract_b0",
