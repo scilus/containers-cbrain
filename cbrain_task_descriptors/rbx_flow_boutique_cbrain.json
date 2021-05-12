@@ -9,10 +9,10 @@
         "cbrain:readonly-input-files": true,
         "cbrain:author": "Arnaud Boré <arnaud.bore@gmail.com> and François Rheault <francois.rheault@usherbrooke.ca>"
      },
-    "command-line": "echo [ANALYSIS_LEVEL]; nextflow run /rbx_flow/main.nf [INPUT_DIR] [ATLAS_CONFIG] [ATLAS_ANAT] [ATLAS_DIR] [OUTPUT_DIR] [ATLAS_CENTROIDS] [MULTI_PARAMETERS] [MINIMAL_VOTE_RATIO] [WB_CLUSTERING_THR] [SEEDS] [OUTLIER_ALPHA] -with-report report.html -profile fully_reproducible,cbrain",
+    "command-line": "echo [ANALYSIS_LEVEL]; nextflow run /rbx_flow/main.nf [INPUT_DIR] --atlas_config /atlas/config.json  --atlas_anat /atlas/mni_masked.nii.gz --atlas_directory /atlas/atlas/ --atlas_centroids /atlas/centroids/ [OUTPUT_DIR]  [MULTI_PARAMETERS] [MINIMAL_VOTE_RATIO] [WB_CLUSTERING_THR] [SEEDS] [OUTLIER_ALPHA] -with-report report.html -profile fully_reproducible,cbrain",
     "container-image":
     {
-        "image": "scilus/cbrain-rbx_flow:test",
+        "image": "scilus/cbrain-rbx_flow:1.0.0",
         "index": "docker://",
         "type": "singularity"
     },
@@ -34,42 +34,6 @@
             "optional": false,
             "type": "String",
             "value-key": "[OUTPUT_DIR]"
-        },
-        {
-            "command-line-flag": "--atlas_config",
-            "description": "Path to json config file",
-            "id": "atlas_config",
-            "name": "atlas_config",
-            "optional": false,
-            "type": "File",
-            "value-key": "[ATLAS_CONFIG]"
-        },
-        {
-            "command-line-flag": "--atlas_anat",
-            "description": "Path to reference anatomy of the atlas",
-            "id": "atlas_anat",
-            "name": "atlas_anat",
-            "optional": false,
-            "type": "File",
-            "value-key": "[ATLAS_ANAT]"
-        },
-        {
-            "command-line-flag": "--atlas_directory",
-            "description": "Path of the folder containing all atlases",
-            "id": "atlas_directory",
-            "name": "atlas_directory",
-            "optional": false,
-            "type": "File",
-            "value-key": "[ATLAS_DIR]"
-        },
-        {
-            "command-line-flag": "--atlas_centroids",
-            "description": "Folder containing centroids (trk) for future tractometry (Must have the same filename as in the atlas_config)",
-            "id": "atlas_centroids",
-            "name": "atlas_centroids",
-            "optional": true,
-            "type": "File",
-            "value-key": "[ATLAS_CENTROIDS]"
         },
         {
             "command-line-flag": "--multi_parameters",

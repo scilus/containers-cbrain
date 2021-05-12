@@ -18,3 +18,5 @@ RUN unzip ${RBXFLOW_VERSION}.zip
 RUN mv rbx_flow-${RBXFLOW_VERSION} rbx_flow
 
 WORKDIR /
+RUN wget https://zenodo.org/record/4630660/files/atlas.zip
+RUN unzip atlas.zip -d atlas
