@@ -80,7 +80,8 @@
             "description": "Output path for the outcomes of preprocessing and visual reports",
             "id": "output_dir_name",
             "name": "output_dir_name",
-            "optional": true,
+            "optional": false,
+            "default-value": "result"
             "type": "String",
             "value-key": "[OUTPUT_DIR]"
         },
