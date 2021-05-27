@@ -81,7 +81,7 @@
             "id": "output_dir_name",
             "name": "output_dir_name",
             "optional": false,
-            "default-value": "result",
+            "default-value": "results",
             "type": "String",
             "value-key": "[OUTPUT_DIR]"
         },
