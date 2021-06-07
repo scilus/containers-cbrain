@@ -1,0 +1,57 @@
+{
+    "name": "dmriQC_flow",
+    "description": "The dmriqc_flow pipeline is a fully automated pipeline to ",
+    "author": "SCILUS (https://github.com/scilus)",
+    "tool-version": "v2.2.1",
+    "schema-version": "0.5",
+    "shell": "/bin/bash",
+    "custom": {
+        "cbrain:readonly-input-files": true,
+        "cbrain:author": "Arnaud Boré <arnaud.bore@gmail.com> and Guillaume Theaud <guillaume.theaud@usherbrooke.ca>"
+     },
+     "command-line": " nextflow run /dmriqc_flow/main.nf [INPUT] [OUTPUT_DIR] [PROFILE],cbrain",
+     "container-image":
+     {
+         "image": "scilus/cbrain-dmriqcflow:test",
+         "index": "docker://",
+         "type": "singularity"
+     },
+     "inputs": [
+       {
+           "command-line-flag": "--input",
+           "description": "Input folder containing multiple subjects. Could be Tractoflow input (BIDS or not), Tractoflow output or RBX_flow output",
+           "id": "input",
+           "name": "input",
+           "optional": false,
+           "default-value": "true",
+           "type": "String",
+           "value-key": "[INPUT]"
+       },
+       {
+           "command-line-flag": "--profile",
+           "description": "Profile.",
+           "id": "profile",
+           "name": "profile",
+           "optional": false,
+           "default-value": "input_qc",
+           "type": "String",
+           "value-key": "[PROFILE]",
+           "value-choices": [
+             "input_qc",
+             "tractoflow_qc_light",
+             "tractoflow_qc_all",
+             "rbx_flow"
+           ]
+       }
+     }
+ ],
+ "output-files" : [
+     {
+         "id" : "output_dir",
+         "name" : "Output Directory",
+         "description" : "This is the directory where the overall outputs are to be stored.",
+         "path-template" : "[OUTPUT_DIR]",
+         "optional" : false
+     }
+ ]
+}
