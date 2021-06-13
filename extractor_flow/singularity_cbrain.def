@@ -1,0 +1,2 @@
+BootStrap: docker
+From: scilus/cbrain-extractor_flow:1.0.0
