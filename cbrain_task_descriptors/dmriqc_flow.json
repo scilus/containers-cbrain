@@ -1,0 +1,39 @@
+{
+    "name": "BIDSAppDMRIQCFlow",
+    "description": "The dmriqc_flow pipeline is a fully automated creation of QC tractoflow",
+    "author": "SCILUS (https://github.com/scilus)",
+    "tool-version": "v0.1.0",
+    "schema-version": "0.5",
+    "shell": "/bin/bash",
+    "custom": {
+        "cbrain:readonly-input-files": true,
+        "cbrain:author": "Arnaud Boré <arnaud.bore@gmail.com> and Guillaume Theaud <guillaume.theaud@usherbrooke.ca>"
+     },
+    "command-line": "echo [ANALYSIS_LEVEL]; nextflow run /dmriqc_flow/main.nf [ROOT_DIR] [OUTPUT_DIR] -with-report report.html -profile tractoflow_qc_all,cbrain",
+    "container-image":
+    {
+        "image": "scilus/cbrain-dmriqc_flow:test",
+        "index": "docker://",
+        "type": "singularity"
+    },
+    "inputs": [
+        {
+            "command-line-flag": "--root",
+            "description": "Input Tractflow output folder",
+            "id": "bids_dir",
+            "name": "Input Tractflow output folder",
+            "optional": false,
+            "type": "File",
+            "value-key": "[ROOT_DIR]"
+        },
+    ],
+    "output-files" : [
+        {
+            "id" : "output_dir",
+            "name" : "Output Directory",
+            "description" : "This is the directory where the overall outputs are to be stored.",
+            "path-template" : "[OUTPUT_DIR]",
+            "optional" : false
+        }
+    ]
+}
