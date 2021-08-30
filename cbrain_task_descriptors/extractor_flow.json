@@ -1,0 +1,48 @@
+{
+    "name": "extractor_flow",
+    "description": "Extractor_flow",
+    "author": "SCILUS (https://github.com/scilus)",
+    "tool-version": "v1.0.0",
+    "schema-version": "0.5",
+    "shell": "/bin/bash",
+    "custom": {
+        "cbrain:readonly-input-files": true,
+        "cbrain:author": "Arnaud Boré <arnaud.bore@gmail.com>"
+     },
+    "command-line": "/extractor_flow/main.nf [INPUT_FOLDER] [OUTPUT_DIR] -with-report report.html -profile cbrain",
+    "container-image":
+    {
+        "image": "scilus/cbrain-extractorflow:1.0.0",
+        "index": "docker://",
+        "type": "singularity"
+    },
+    "inputs": [
+        {
+            "description": "Input directory.",
+            "id": "input_dir",
+            "name": "input_dir",
+            "optional": false,
+            "type": "File",
+            "value-key": "[INPUT_FOLDER]"
+        },
+        {
+            "command-line-flag": "--output_dir",
+            "description": "Output path for the outcomes of preprocessing and visual reports",
+            "id": "output_dir_name",
+            "name": "output_dir_name",
+            "optional": false,
+            "default-value": "results",
+            "type": "String",
+            "value-key": "[OUTPUT_DIR]"
+        }
+    ],
+    "output-files" : [
+        {
+            "id" : "output_dir",
+            "name" : "Output Directory",
+            "description" : "This is the directory where the overall outputs are to be stored.",
+            "path-template" : "[OUTPUT_DIR]",
+            "optional" : false
+        }
+    ]
+}
