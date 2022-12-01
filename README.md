@@ -1,3 +1,6 @@
+This repository is not used anymore.
+Please use: https://github.com/scilus/containers-scilus
+
 # containers-cbrain
 
 Repo for all SCIL flows adapted for [CBrain](https://github.com/aces/cbrain/wiki)
